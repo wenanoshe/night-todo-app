@@ -1,11 +1,12 @@
-import "./App.css";
+import "./App.scss";
 
-import Todo from "./components/Todo";
+import Todos from "./components/Todos";
 
 function App() {
   return (
     <>
-      <Todo />
+      <h1 className="appTitle">Todoro App</h1>
+      <Todos />
     </>
   );
 }
