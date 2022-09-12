@@ -1,6 +1,10 @@
 import { useState } from "react";
 import EditItemForm from "./EditItemForm";
 
+import "../styles/components/TodoItem.scss";
+
+import { TrashIcon, PencilIcon } from "@heroicons/react/24/outline";
+
 const TodoList = ({
   item,
   handleDeleteItem,
@@ -14,23 +18,38 @@ const TodoList = ({
     setIsEdit(false);
   };
 
+  const onCancel = () => setIsEdit(false);
+
   return isEdit ? (
-    <tr>
-      <td span="3">
-        <EditItemForm body={item.body} onUpdate={onUpdate} />
-      </td>
-    </tr>
+    <EditItemForm body={item.body} onUpdate={onUpdate} onCancel={onCancel} />
   ) : (
-    <tr>
-      <td>
-        <input type="checkbox" onChange={() => handleCompleted(item.id)} />
-      </td>
-      <td>{item.body}</td>
-      <td>
-        <button onClick={() => setIsEdit(true)}>Edit</button>
-        <button onClick={() => handleDeleteItem(item.id)}>Delete</button>
-      </td>
-    </tr>
+    <li className="task">
+      <label className="task__checkLabel">
+        <input
+          type="checkbox"
+          checked={item.completed}
+          onChange={() => handleCompleted(item.id)}
+        />
+        <span></span>
+      </label>
+
+      <p className="task__body">{item.body}</p>
+
+      <div className="task__actions">
+        <button
+          className="task__btn task__edit"
+          onClick={() => setIsEdit(true)}
+        >
+          <PencilIcon />
+        </button>
+        <button
+          className="task__btn task__delete"
+          onClick={() => handleDeleteItem(item.id)}
+        >
+          <TrashIcon />
+        </button>
+      </div>
+    </li>
   );
 };
 

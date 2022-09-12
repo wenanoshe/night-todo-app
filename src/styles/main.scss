@@ -1,0 +1,25 @@
+:root {
+  font-size: 10px;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+}
+
+body {
+  // width: 100vw;
+  height: 100vh;
+  font-size: 1.6rem;
+}
+
+@media screen and (max-width: 500px) {
+  body {
+    font-size: 1.4rem;
+  }
+}

@@ -1,0 +1,33 @@
+/*Colors*/
+$black: #222;
+$black-2: #444;
+$black-3: #666;
+
+$pale-blue: #646cff;
+$white: #fff;
+$white-1: #eee;
+$transparent-black: rgba(0, 0, 0, 0.1);
+
+/*Sizes*/
+$radius: 0.8rem;
+$radius-2: 0.4rem;
+
+/* trasition*/
+$speed: 300ms;
+
+/*Fonts*/
+
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Roboto:wght@100;300;400;500;700;900&family=Work+Sans:wght@200;300;400;500;600;700;800;900&display=swap");
+
+$work-sans: "Work Sans", sans-serif;
+$roboto: "Roboto", sans-serif;
+$open-sans: "Open Sans", sans-serif;
+
+/* Mixins */
+@mixin flex($jc, $ai: strech, $fdirection: row, $gap: 0) {
+  display: flex;
+  flex-direction: $fdirection;
+  justify-content: $jc;
+  align-items: $ai;
+  gap: $gap;
+}

@@ -1,6 +1,9 @@
 import { useState } from "react";
 
-const EditItemForm = ({ body, onUpdate }) => {
+import "../styles/components/EditItemForm.scss";
+import { ArrowUpOnSquareIcon, XCircleIcon } from "@heroicons/react/24/outline";
+
+const EditItemForm = ({ body, onUpdate, onCancel }) => {
   const [newValue, setNewValue] = useState(body ?? "");
 
   const handleClick = (e) => {
@@ -11,14 +14,18 @@ const EditItemForm = ({ body, onUpdate }) => {
   };
 
   return (
-    <form>
+    <form className="form">
       <input
+        className="form__input"
         type="text"
         value={newValue}
         onChange={(e) => setNewValue(e.target.value)}
       />
-      <button type="submit" onClick={handleClick}>
-        Update
+      <button className="form__cancel" type="button" onClick={onCancel}>
+        <span>Cancel</span> <XCircleIcon className="form__icon" />
+      </button>
+      <button className="form__submit" type="submit" onClick={handleClick}>
+        <span>Update</span> <ArrowUpOnSquareIcon className="form__icon" />
       </button>
     </form>
   );

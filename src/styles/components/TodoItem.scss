@@ -1,0 +1,79 @@
+@use "../vars" as *;
+
+.task {
+  @include flex(space-between, center, row, 1.5rem);
+  height: 5rem;
+  background-color: $white-1;
+  border-radius: $radius;
+  padding: 0 3rem;
+  overflow: hidden;
+
+  &__body {
+    width: 80%;
+    max-height: 4rem;
+    min-width: 22rem;
+    text-align: start;
+    text-overflow: ellipsis;
+    margin: 0;
+    // overflow: auto;
+  }
+
+  &__actions {
+    @include flex(center, center, row, 1rem);
+  }
+
+  &__btn {
+    width: 1.875em;
+    height: 1.875em;
+    border: none;
+    background-color: inherit;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform $speed, background-color $speed;
+    @include flex(center, center);
+
+    &:hover {
+      transform: scale(1.1);
+      background-color: $pale-blue;
+    }
+    &:active {
+      transform: scale(0.9);
+    }
+    &:focus {
+      border-color: $black-3;
+    }
+  }
+
+  // Checkbox
+  &__checkLabel {
+    display: block;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+
+    & input[type="checkbox"] {
+      position: absolute;
+      transform: scale(0);
+    }
+
+    & input[type="checkbox"]:checked ~ span {
+      transform: rotate(45deg) translate(-5px, -2px);
+      width: 14px;
+      margin-left: 5px;
+      border-color: $pale-blue;
+      border-width: 5px;
+      border-top-color: transparent;
+      border-left-color: transparent;
+      border-radius: 0;
+    }
+
+    & span {
+      display: block;
+      width: inherit;
+      height: inherit;
+      border: solid 3px #2a2a2ab7;
+      border-radius: 6px;
+      transition: all 0.375s;
+    }
+  }
+}

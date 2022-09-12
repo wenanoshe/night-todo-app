@@ -1,0 +1,57 @@
+@use "../vars" as *;
+
+.form {
+  height: 5rem;
+  border-radius: $radius;
+  background-color: $white-1;
+  @include flex(space-between, center);
+  padding: 0 1rem;
+
+  &__input {
+    width: 65%;
+    height: 4rem;
+    border-radius: $radius;
+    padding: 1rem;
+    border: 2px solid transparent;
+    transition: border $speed, box-shadow $speed;
+    color: $black-3;
+    background-color: $white;
+
+    &:hover {
+      border-color: $black-3;
+    }
+    &:focus {
+      outline: none;
+      border-color: $pale-blue;
+      box-shadow: 0 0 5px 5px hsla(0, 0, 0, 0.1);
+    }
+  }
+
+  &__submit,
+  &__cancel {
+    width: 6.25em;
+    height: 2.5em;
+    border-radius: $radius;
+    background-color: $pale-blue;
+    border: 2px solid transparent;
+    cursor: pointer;
+    @include flex(center, center, row, 1rem);
+    transition: transform $speed;
+    // transform: scale(0.9);
+    font-size: 1.4rem;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+    &:active {
+      transform: scale(0.9);
+    }
+    &:focus {
+      border-color: $black-3;
+    }
+  }
+
+  &__icon {
+    height: 1.25em;
+  }
+}

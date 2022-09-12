@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 import TodoItem from "./TodoItem";
 
+import "../styles/components/Todos.scss";
+import { PlusCircleIcon } from "@heroicons/react/24/outline";
+import TaskSvg from "../assets/task-svgrepo-com.svg";
+
+// Todos
 const initialTodos = JSON.parse(localStorage.getItem("todos")) || [];
 
 const Todos = () => {
@@ -50,46 +55,47 @@ const Todos = () => {
 
   const handleCompleted = (id) => {
     const temp = [...todos];
-
     const item = temp.find((item) => item.id === id);
-    item.completed = true;
-    setTodos(temp);
+    item.completed = !item.completed;
+    setTodos([...temp]);
   };
 
   return (
-    <div>
-      <form>
-        <input type="text" onChange={handleChange} value={newTodoBody} />
-        <button type="submit" onClick={handleClick}>
-          Add
+    <div className="todos">
+      <form className="todos__form">
+        <input
+          className="todos__input"
+          type="text"
+          placeholder="Write a new todo"
+          onChange={handleChange}
+          value={newTodoBody}
+        />
+        <button className="todos__add" type="submit" onClick={handleClick}>
+          <span>Add</span> <PlusCircleIcon className="todos__icon" />
         </button>
       </form>
-      <table>
-        <thead>
-          <tr>
-            <th>State</th>
-            <th>To do</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {todos.length > 0 ? (
-            todos.map((item) => (
-              <TodoItem
-                item={item}
-                key={item.id}
-                handleDeleteItem={handleDeleteItem}
-                handleUpdate={handleUpdate}
-                handleCompleted={handleCompleted}
-              />
-            ))
-          ) : (
-            <tr>
-              <td span="3">Without Todos, creates one</td>
-            </tr>
-          )}
-        </tbody>
-      </table>
+      {todos.length > 0 ? (
+        <ul className="todos__list">
+          {todos.map((item) => (
+            <TodoItem
+              item={item}
+              key={item.id}
+              handleDeleteItem={handleDeleteItem}
+              handleUpdate={handleUpdate}
+              handleCompleted={handleCompleted}
+            />
+          ))}
+        </ul>
+      ) : (
+        <div className="todos__noTodos">
+          <img
+            className="todos__noTodosImg"
+            src={TaskSvg}
+            alt="Pin a task vector svgrepo.com"
+          />
+          <p className="todos__stm">Without todos, create one!</p>
+        </div>
+      )}
     </div>
   );
 };

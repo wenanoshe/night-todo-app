@@ -1,13 +1,13 @@
-import "./App.scss";
+import "./styles/App.scss";
 
 import Todos from "./components/Todos";
 
 function App() {
   return (
-    <>
-      <h1 className="appTitle">Todoro App</h1>
+    <div className="app">
+      <h1 className="app__title">Todoro App</h1>
       <Todos />
-    </>
+    </div>
   );
 }
 
