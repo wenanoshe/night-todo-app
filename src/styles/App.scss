@@ -27,3 +27,12 @@
     font-family: $work-sans;
   }
 }
+
+@media screen and (max-width: 550px) {
+  #root {
+    padding: 0;
+  }
+  .app {
+    padding: 3rem 2rem;
+  }
+}

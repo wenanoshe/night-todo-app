@@ -1,5 +1,8 @@
 import { useState } from "react";
+import { useModal } from "../hooks/useModal";
+
 import EditItemForm from "./EditItemForm";
+import Modal from "./Modal";
 
 import "../styles/components/TodoItem.scss";
 
@@ -13,12 +16,18 @@ const TodoList = ({
 }) => {
   const [isEdit, setIsEdit] = useState(false);
 
+  const [isOpenModal, openModal, closeModal] = useModal();
+
   const onUpdate = (newValue) => {
     handleUpdate(item.id, newValue);
     setIsEdit(false);
   };
 
   const onCancel = () => setIsEdit(false);
+
+  const showContent = () => {
+    openModal();
+  };
 
   return isEdit ? (
     <EditItemForm body={item.body} onUpdate={onUpdate} onCancel={onCancel} />
@@ -33,7 +42,9 @@ const TodoList = ({
         <span></span>
       </label>
 
-      <p className="task__body">{item.body}</p>
+      <p className="task__body" onClick={showContent}>
+        {item.body}
+      </p>
 
       <div className="task__actions">
         <button
@@ -49,6 +60,9 @@ const TodoList = ({
           <TrashIcon />
         </button>
       </div>
+      <Modal isOpen={isOpenModal} closeModal={closeModal}>
+        <p>{item.body}</p>
+      </Modal>
     </li>
   );
 };

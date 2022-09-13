@@ -15,11 +15,13 @@ img {
 body {
   // width: 100vw;
   height: 100vh;
+  min-height: 100vh;
   font-size: 1.6rem;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 550px) {
   body {
     font-size: 1.4rem;
+    overflow: auto;
   }
 }
