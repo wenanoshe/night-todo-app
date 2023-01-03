@@ -25,10 +25,6 @@ const TodoList = ({
 
   const onCancel = () => setIsEdit(false);
 
-  const showContent = () => {
-    openModal();
-  };
-
   return isEdit ? (
     <EditItemForm body={item.body} onUpdate={onUpdate} onCancel={onCancel} />
   ) : (
@@ -42,7 +38,7 @@ const TodoList = ({
         <span></span>
       </label>
 
-      <p className="task__body" onClick={showContent}>
+      <p className="task__body" onClick={() => openModal()}>
         {item.body}
       </p>
 

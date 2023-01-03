@@ -1,6 +1,6 @@
 import "../styles/components/Modal.scss";
 
-export default function Modals({ isOpen, closeModal, children }) {
+const Modals = ({ isOpen, closeModal, children }) => {
   return (
     <article
       className={`modal ${isOpen && "modal--open"}`}
@@ -14,4 +14,5 @@ export default function Modals({ isOpen, closeModal, children }) {
       </div>
     </article>
   );
-}
+};
+export default Modals;
