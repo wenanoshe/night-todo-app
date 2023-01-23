@@ -8,6 +8,10 @@
   padding: 0 3rem;
   overflow: hidden;
 
+  &--completed {
+    opacity: 0.5;
+  }
+
   &__body {
     width: 80%;
     max-height: 4rem;

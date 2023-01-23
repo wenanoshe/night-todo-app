@@ -15,8 +15,18 @@ const TodoList = ({
   handleCompleted,
 }) => {
   const [isEdit, setIsEdit] = useState(false);
-
+  const [completed, setCompleted] = useState("");
   const [isOpenModal, openModal, closeModal] = useModal();
+
+  const handleChecked = () => {
+    handleCompleted(item.id);
+
+    if (item.completed) {
+      setCompleted("task--completed");
+    } else {
+      setCompleted("");
+    }
+  };
 
   const onUpdate = (newValue) => {
     handleUpdate(item.id, newValue);
@@ -28,12 +38,12 @@ const TodoList = ({
   return isEdit ? (
     <EditItemForm body={item.body} onUpdate={onUpdate} onCancel={onCancel} />
   ) : (
-    <li className="task">
+    <li className={`task ${completed}`}>
       <label className="task__checkLabel">
         <input
           type="checkbox"
           checked={item.completed}
-          onChange={() => handleCompleted(item.id)}
+          onChange={handleChecked}
         />
         <span></span>
       </label>

@@ -55,8 +55,14 @@ const Todos = () => {
 
   const handleCompleted = (id) => {
     const temp = [...todos];
-    const item = temp.find((item) => item.id === id);
+    const itemIndex = temp.findIndex((item) => item.id === id);
+    const [item] = temp.splice(itemIndex, 1);
+
+    console.log({ temp, item });
+
     item.completed = !item.completed;
+
+    temp.push(item);
     setTodos([...temp]);
   };
 
