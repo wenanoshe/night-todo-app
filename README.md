@@ -2,4 +2,4 @@
 
 Is an small todo list built in Reactjs
 
-Watch project here: https://todoro-list.vercel.app/
+Watch project here: https://todorolist.vercel.app/
