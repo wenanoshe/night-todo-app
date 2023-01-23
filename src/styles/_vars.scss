@@ -24,7 +24,7 @@ $roboto: "Roboto", sans-serif;
 $open-sans: "Open Sans", sans-serif;
 
 /* Mixins */
-@mixin flex($jc, $ai: strech, $fdirection: row, $gap: 0) {
+@mixin flex($jc: stretch, $ai: stretch, $fdirection: row, $gap: 0) {
   display: flex;
   flex-direction: $fdirection;
   justify-content: $jc;

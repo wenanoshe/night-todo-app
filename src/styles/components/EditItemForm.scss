@@ -4,7 +4,7 @@
   height: 5rem;
   border-radius: $radius;
   background-color: $white-1;
-  @include flex(space-between, center);
+  @include flex(center, center, row, 2rem);
   padding: 0 1rem;
 
   &__input {
@@ -15,7 +15,7 @@
     border: 2px solid transparent;
     transition: border $speed, box-shadow $speed;
     color: $black-3;
-    background-color: $white;
+    background-color: $white-1;
 
     &:hover {
       border-color: $black-3;
@@ -23,12 +23,15 @@
     &:focus {
       outline: none;
       border-color: $pale-blue;
-      box-shadow: 0 0 5px 5px hsla(0, 0, 0, 0.1);
     }
   }
 
-  &__submit,
-  &__cancel {
+  &__btns {
+    @include flex;
+    gap: 2rem;
+  }
+
+  &__btn {
     width: 6.25em;
     height: 2.5em;
     border-radius: $radius;
@@ -37,7 +40,6 @@
     cursor: pointer;
     @include flex(center, center, row, 1rem);
     transition: transform $speed;
-    // transform: scale(0.9);
     font-size: 1.4rem;
 
     &:hover {
@@ -49,9 +51,39 @@
     &:focus {
       border-color: $black-3;
     }
+
+    &:first-child {
+      background-color: $white-1;
+    }
   }
 
   &__icon {
     height: 1.25em;
+  }
+
+  /* MEDIA QUERYs*/
+
+  @media screen and (max-width: 540px) {
+    & {
+      height: auto;
+      flex-direction: column;
+      gap: 1rem;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
+
+    &__btns,
+    &__input {
+      width: 100%;
+    }
+
+    &__btns {
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    &__btn {
+      width: 100%;
+    }
   }
 }

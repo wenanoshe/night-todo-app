@@ -21,12 +21,14 @@ const EditItemForm = ({ body, onUpdate, onCancel }) => {
         value={newValue}
         onChange={(e) => setNewValue(e.target.value)}
       />
-      <button className="form__cancel" type="button" onClick={onCancel}>
-        <span>Cancel</span> <XCircleIcon className="form__icon" />
-      </button>
-      <button className="form__submit" type="submit" onClick={handleClick}>
-        <span>Update</span> <ArrowUpOnSquareIcon className="form__icon" />
-      </button>
+      <div className="form__btns">
+        <button className="form__btn" type="button" onClick={onCancel}>
+          <span>Cancel</span> <XCircleIcon className="form__icon" />
+        </button>
+        <button className="form__btn" type="submit" onClick={handleClick}>
+          <span>Update</span> <ArrowUpOnSquareIcon className="form__icon" />
+        </button>
+      </div>
     </form>
   );
 };
